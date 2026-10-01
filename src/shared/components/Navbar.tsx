@@ -1,32 +1,41 @@
 import { Handbag, Moon, ShoppingCart, Sun } from "lucide-react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { useStore } from "../../store/useStore";
 import { useTheme } from "../../theme/useTheme";
 
+function navLinkClass({ isActive }: { isActive: boolean }) {
+    return isActive
+        ? "rounded-md bg-gray-100 px-3 py-1.5 font-medium text-black dark:bg-white/10 dark:text-white"
+        : "px-3 py-1.5 text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white";
+}
+
 function Navbar() {
-    const { cart } = useStore();
+    const { cartCount } = useStore();
     const { theme, toggleTheme } = useTheme();
     return (
-        <header className="border-b border-black/10 bg-white dark:border-white/10 dark:bg-[#171717] dark:text-white">
-            <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-            <Link to="/" className="flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-black text-white"><Handbag size={18} /></span>
-                <div>
-                    <h3 className="leading-none font-semibold">Pasal</h3>
-                    <p className="text-[11px] text-black/55">everyday essentials</p>
+        <header className="border-b border-gray-200 bg-white dark:border-white/10 dark:bg-[#171717]">
+            <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+                <Link to="/" className="flex items-center gap-2">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black"><Handbag size={16} /></span>
+                    <span className="text-lg font-semibold">Pasal</span>
+                </Link>
+                <nav className="ml-4 flex text-sm">
+                    <NavLink to="/" end className={navLinkClass}>Shop</NavLink>
+                    <NavLink to="/add-product" className={navLinkClass}>Add Product</NavLink>
+                </nav>
+                <div className="ml-auto flex items-center gap-1">
+                    <button type="button" aria-label="Toggle dark mode" onClick={toggleTheme} className="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-white/10">
+                        {theme === "light" ? <Moon size={19} /> : <Sun size={19} />}
+                    </button>
+                    <Link to="/cart" aria-label="Shopping cart" className="relative rounded-full p-2 hover:bg-gray-100 dark:hover:bg-white/10">
+                        <ShoppingCart size={20} />
+                        {cartCount > 0 && (
+                            <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-bold text-white">
+                                {cartCount}
+                            </span>
+                        )}
+                    </Link>
                 </div>
-            </Link>
-            <nav className="ml-auto hidden gap-6 pr-4 text-sm text-black/65 dark:text-white/65 sm:flex">
-                <Link to="/">Shop</Link>
-                <Link to="/add-product">Add product</Link>
-            </nav>
-            <button type="button" aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`} onClick={toggleTheme} className="rounded-full p-2 hover:bg-black/5 dark:hover:bg-white/10">
-                {theme === "light" ? <Moon size={19} /> : <Sun size={19} />}
-            </button>
-            <Link to="/cart" aria-label="Shopping cart" className="relative rounded-full p-2 hover:bg-black/5 dark:hover:bg-white/10">
-                <ShoppingCart size={20} />
-                {cart.length > 0 && <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-black px-1 text-[10px] text-white">{cart.length}</span>}
-            </Link>
             </div>
         </header>
     );
