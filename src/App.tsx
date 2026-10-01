@@ -5,11 +5,16 @@ import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import CartPage from "./pages/CartPage/CartPage";
 import AddProductPage from "./pages/AddProductPage/AddProductPage";
 import Layout from "./Layout";
+import { StoreProvider } from "./store/StoreContext";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import { ThemeProvider } from "./theme/ThemeContext";
 
 const queryClient = new QueryClient();
 function App() {
     return (
-        <QueryClientProvider client={queryClient} >
+        <ThemeProvider>
+        <StoreProvider>
+        <QueryClientProvider client={queryClient}>
             <BrowserRouter>
                 <Routes>
                     <Route path="" Component={Layout}>
@@ -17,10 +22,13 @@ function App() {
                         <Route path="/product/:id" Component={ProductDetailsPage} />
                         <Route path="/cart" Component={CartPage} />
                         <Route path="/add-product" Component={AddProductPage} />
+                        <Route path="*" Component={NotFoundPage} />
                     </Route>
                 </Routes>
             </BrowserRouter>
-        </QueryClientProvider >
+        </QueryClientProvider>
+        </StoreProvider>
+        </ThemeProvider>
     )
 
 }
