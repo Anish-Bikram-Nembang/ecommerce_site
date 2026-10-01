@@ -59,7 +59,7 @@ function HomePage() {
             <h1 className="text-3xl font-semibold sm:text-4xl">Discover Products</h1>
             <p className="mt-1 text-gray-600 dark:text-gray-400">Browse the products below and add them to your cart.</p>
 
-            <div className="mt-6 flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-[#1f1f1f]">
+            <div className="mt-6 flex flex-col gap-4 rounded-xl bg-white p-4 dark:bg-[#1f1f1f]">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <Searchbar placeholder="Search products..." value={search} onChange={e => setSearch(e.target.value)} />
                     <div className="flex items-center gap-2 text-sm">

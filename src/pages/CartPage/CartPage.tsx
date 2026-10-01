@@ -26,7 +26,7 @@ function CartPage() {
             <div className="mt-6 grid gap-6 lg:grid-cols-3">
                 <div className="space-y-4 lg:col-span-2">
                     {cart.map(({ product, quantity }) => (
-                        <div key={product.id} className="flex gap-4 rounded-xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-[#1f1f1f]">
+                        <div key={product.id} className="flex gap-4 rounded-xl bg-white p-4 dark:bg-[#1f1f1f]">
                             <Link to={`/product/${product.id}`} className="flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-white p-2">
                                 <img src={product.image} alt={product.title} className="h-full w-full object-contain" />
                             </Link>
@@ -59,7 +59,7 @@ function CartPage() {
                     </Link>
                 </div>
 
-                <div className="h-fit rounded-xl border border-gray-200 bg-white p-6 dark:border-white/10 dark:bg-[#1f1f1f]">
+                <div className="h-fit rounded-xl bg-white p-6 dark:bg-[#1f1f1f]">
                     <h2 className="text-xl font-semibold">Order Summary</h2>
                     <div className="mt-4 space-y-2 text-sm">
                         <div className="flex justify-between"><span>Subtotal</span><span>${total.toFixed(2)}</span></div>

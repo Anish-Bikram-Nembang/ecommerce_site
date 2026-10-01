@@ -62,7 +62,7 @@ function AddProductPage() {
             <p className="mt-1 text-gray-600 dark:text-gray-400">Fill in the form to add a product to the top of the shop.</p>
 
             <div className="mt-6 grid gap-6 md:grid-cols-5">
-                <form onSubmit={handleSubmit} noValidate className="space-y-5 rounded-xl border border-gray-200 bg-white p-6 md:col-span-3 dark:border-white/10 dark:bg-[#1f1f1f]">
+                <form onSubmit={handleSubmit} noValidate className="space-y-5 rounded-xl bg-white p-6 md:col-span-3 dark:bg-[#1f1f1f]">
                     <div>
                         <label htmlFor="name" className="text-sm font-medium">Product Name <span className="text-red-500">*</span></label>
                         <input id="name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="e.g. Cotton T-Shirt" className={inputClass("name")} />
@@ -97,7 +97,7 @@ function AddProductPage() {
 
                 <div className="md:col-span-2">
                     <p className="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Preview</p>
-                    <div className="rounded-xl border border-gray-200 bg-white p-3 dark:border-white/10 dark:bg-[#1f1f1f]">
+                    <div className="rounded-xl bg-white p-3 dark:bg-[#1f1f1f]">
                         <div className="flex aspect-square items-center justify-center rounded-lg bg-gray-50 p-4 text-sm text-gray-400">
                             {URL_PATTERN.test(form.image.trim()) ? <img src={form.image} alt="Preview" className="h-full w-full object-contain" /> : "No image yet"}
                         </div>

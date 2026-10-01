@@ -54,10 +54,10 @@ function ProductDetailsPage() {
             </div>
 
             <div className="mt-6 grid gap-6 md:grid-cols-2">
-                <div className="flex min-h-80 items-center justify-center rounded-xl border border-gray-200 bg-white p-10 dark:border-white/10">
+                <div className="flex min-h-80 items-center justify-center rounded-xl bg-white p-10">
                     <img src={product.image} alt={product.title} className="max-h-80 object-contain" />
                 </div>
-                <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-white/10 dark:bg-[#1f1f1f]">
+                <div className="rounded-xl bg-white p-6 dark:bg-[#1f1f1f]">
                     {product.rating && (
                         <p className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
                             <Star size={15} className="fill-amber-400 text-amber-400" />

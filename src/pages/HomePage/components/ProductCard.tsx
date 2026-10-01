@@ -13,9 +13,9 @@ export interface ProductCardProps {
 
 function ProductCard({ id, name, price, image, rating, category, onAddToCart }: ProductCardProps) {
     return (
-        <article className="flex flex-col rounded-xl border border-gray-200 bg-white p-3 shadow-sm dark:border-white/10 dark:bg-[#1f1f1f]">
+        <article className="flex flex-col rounded-xl bg-white p-3 dark:bg-[#1f1f1f]">
             <Link to={`/product/${id}`} className="relative flex aspect-square items-center justify-center rounded-lg bg-gray-50 p-6 dark:bg-white">
-                {category && <span className="absolute left-2 top-2 rounded bg-white px-2 py-0.5 text-[11px] font-semibold capitalize text-gray-700 shadow-sm">{category}</span>}
+                {category && <span className="absolute left-2 top-2 rounded bg-white px-2 py-0.5 text-[11px] font-semibold capitalize text-gray-700">{category}</span>}
                 <img src={image} alt={name} className="h-full w-full object-contain" />
             </Link>
             <div className="flex flex-1 flex-col pt-3">
